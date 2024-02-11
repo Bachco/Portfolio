@@ -5,7 +5,11 @@ export const ContactForm = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    console.log(e.currentTarget.name.value);
+    const name = e.currentTarget.name.value;
+    const email = e.currentTarget.email.value;
+    const subject = e.currentTarget.subject.value;
+    const message = e.currentTarget.message.value;
+    console.log(name + " | " + email + " | " + subject + " | " + message);
     console.log(e.currentTarget);
     console.log(data);
 
@@ -22,7 +26,6 @@ export const ContactForm = () => {
       console.error(err);
       alert("We can't submit the form, try again later?");
     }
-    
   }
 
   return (
@@ -40,7 +43,12 @@ export const ContactForm = () => {
             className="input"
             name="name"
           />
-          <input type="text" placeholder="email" className="input" />
+          <input
+            type="text"
+            placeholder="email"
+            className="input"
+            name="email"
+          />
         </div>
         <input
           type="text"
