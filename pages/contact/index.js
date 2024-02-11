@@ -5,8 +5,9 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
 
 import Link from "next/link";
+import { ContactForm } from "../../components/ContactForm";
 
-const ContactContent = {
+export const ContactContent = {
   title: "Let's <span class='text-accent'>connect.</span>",
   buttonText: "Let's talk",
   placeholders: {
@@ -79,38 +80,7 @@ const Contact = () => {
             animate="show"
             exit="hidden"
           >
-            <form className="flex-1 flex flex-col gap-6 w-full mx-auto">
-              {/** group */}
-              <div className="flex gap-x-6 w-full">
-                <input
-                  type="text"
-                  placeholder={ContactContent.placeholders.name}
-                  className="input"
-                />
-                <input type="text" placeholder="email" className="input" />
-              </div>
-              <input
-                type="text"
-                placeholder={ContactContent.placeholders.subject}
-                className="input"
-              />
-              <textarea
-                placeholder={ContactContent.placeholders.message}
-                className="textarea"
-              />
-              <button
-                className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300
-          flex items-center justify-center overflow-hidden hover:border-accent group"
-              >
-                <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
-                  {ContactContent.buttonText}
-                </span>
-                <BsArrowRight
-                  className="-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100
-            transition-all duration-500 absolute text-[22px]"
-                />
-              </button>
-            </form>
+            <ContactForm ContactContent={ContactContent}/>
           </motion.div>
         </div>
       </div>
