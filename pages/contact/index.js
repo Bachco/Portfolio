@@ -32,11 +32,11 @@ export const ContactContent = {
 
 const Contact = () => {
   return (
-    <div className="h-full bg-primary/30">
+    <div className="h-full bg-primary/30 xl:pt-36 xl:pb-36 pt-24 pb-20">
       <Circles />
-      <div className="container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full">
+      <div className="container mx-auto h-full xl:overflow-y-visible overflow-y-scroll">
         <div className="flex flex-col xl:flex-row gap-x-8">
-          <div className="text-center flex xl:w-[30vw] flex-col lg:text-left mb-4">
+          <div className="text-center flex xl:w-[30vw] flex-col xl:text-left mb-4">
             {/** text */}
             <motion.h2
               className="h2 mb-12"
