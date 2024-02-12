@@ -8,7 +8,7 @@ import { fadeIn } from "../../variants";
 const serviceContent = {
   title: "My work <span class='text-accent'>.</span>",
   content:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris maximus dui lacus.",
+    "",
 };
 
 const Work = () => {
@@ -27,6 +27,7 @@ const Work = () => {
               animate="show"
               exit="hidden"
             />
+            {/*
             <motion.p
               className="mb-4 masx-w-[400px] mx-auto lg:mx-0"
               dangerouslySetInnerHTML={{ __html: serviceContent.content }}
@@ -35,6 +36,7 @@ const Work = () => {
               animate="show"
               exit="hidden"
             />
+          */}
           </div>
           <motion.div
             className="w-full xl:max-w-[65%]"
