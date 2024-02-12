@@ -1,5 +1,6 @@
 import { BsArrowRight } from "react-icons/bs";
 import { ContactContent } from "../pages/contact";
+import InDev from "./InDev";
 
 export const ContactForm = () => {
   async function handleSubmit(e) {
@@ -29,7 +30,7 @@ export const ContactForm = () => {
   }
 
   return (
-    <div>
+    <div className="relative">
       <form
         className="flex-1 flex flex-col gap-6 w-full mx-auto"
         onSubmit={handleSubmit}
@@ -75,6 +76,7 @@ export const ContactForm = () => {
           />
         </button>
       </form>
+      < InDev />
     </div>
   );
 };
