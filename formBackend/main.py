@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, make_response, request
 ##wvuo vkro hmqd eoiw
 
 import smtplib
@@ -23,7 +23,7 @@ def send_email(name, email, message, subject):
         server.sendmail(EMAIL, RECIPIENT, msg.as_string() + f'\nEMAIL: {email}\nNAME: {name}')
         print('Sent email')
 
-@app.route('/contact', methods=['POST'])
+@app.route('/contact', methods=['POST', 'OPTIONS'])
 def contact():
     name = request.form.get('name')
     email = request.form.get('email')
@@ -31,9 +31,9 @@ def contact():
     subject = request.form.get('subject')
 
     send_email(name, email, message, subject)
-
-
-    return 'Contact form submitted successfully'
+    response = make_response('Contact form submitted successfully', 200)
+    response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
+    return response
 
 if __name__ == '__main__':
     app.run()
