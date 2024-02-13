@@ -32,7 +32,7 @@ def contact():
 
     send_email(name, email, message, subject)
     response = make_response('Contact form submitted successfully', 200)
-    response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
+    response.headers['Access-Control-Allow-Origin'] = 'https://www.jozefbachorik.com/'
     return response
 
 if __name__ == '__main__':
