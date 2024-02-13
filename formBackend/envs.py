@@ -1,9 +1,9 @@
 import os
 
 # Set the password as an environment variable
-os.environ['PASSWORD'] = 'wvuo vkro hmqd eoiw'
-os.environ['EMAIL'] = 'papeklolek45@gmail.com'
-os.environ['RECIPIENT'] = 'bulanec123@gmail.com'
+os.environ['PASSWORD'] = 'bawn oxhu xzsv thmv'
+os.environ['EMAIL'] = 'jozefbachorik@gmail.com'
+os.environ['RECIPIENT'] = 'jozefbachorik@gmail.com'
 
 # Access the password from the environment variable
 PASSWORD = os.environ['PASSWORD']
