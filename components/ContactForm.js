@@ -14,7 +14,7 @@ export const ContactForm = () => {
     console.log(data);
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("http://localhost:5000/contact", {
         method: "post",
         body: new URLSearchParams(data),
       });
