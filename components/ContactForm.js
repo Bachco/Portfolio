@@ -42,25 +42,25 @@ export const ContactForm = () => {
             type="text"
             placeholder={ContactContent.placeholders.name}
             className="input normal-case"
-            name="Name"
+            name="name"
           />
           <input
             type="text"
-            placeholder="email"
+            placeholder="Email"
             className="input lowercase"
-            name="Email"
+            name="email"
           />
         </div>
         <input
           type="text"
           placeholder={ContactContent.placeholders.subject}
           className="input normal-case"
-          name="Subject"
+          name="subject"
         />
         <textarea
           placeholder={ContactContent.placeholders.message}
           className="textarea normal-case"
-          name="Message"
+          name="message"
         />
         <button
           className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300
@@ -76,7 +76,7 @@ export const ContactForm = () => {
           />
         </button>
       </form>
-      <InDev/>
+      {/* <InDev/> */}
     </div>
   );
 };

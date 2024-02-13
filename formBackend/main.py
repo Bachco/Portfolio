@@ -3,21 +3,25 @@ from flask import Flask, render_template, request
 
 import smtplib
 
-from envs import PASSWORD, RECIPIENT
-from envs import EMAIL as sender_email
+from envs import PASSWORD, RECIPIENT, EMAIL
 from email.mime.text import MIMEText
 
 app = Flask(__name__)
+app.debug = True
 
 def send_email(name, email, message, subject):
     msg = MIMEText(message)
     msg['Name'] = name
     msg['Subject'] = subject
     msg['From'] = email
+    msg['To'] = RECIPIENT
 
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-        server.login(sender_email, PASSWORD)
-        server.sendmail(sender_email, RECIPIENT, msg.as_string())
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, local_hostname='localhost') as server:
+        server.login(EMAIL, PASSWORD)
+        
+        print('Logged in')
+        server.sendmail(EMAIL, RECIPIENT, msg.as_string() + f'\nEMAIL: {email}\nNAME: {name}')
+        print('Sent email')
 
 @app.route('/contact', methods=['POST'])
 def contact():
