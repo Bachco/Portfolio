@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
         <motion.div key={router.route} className='h-full'>
           <Transition />
           <Component {...pageProps}/> 
-        </motion.div>X
+        </motion.div>
       </AnimatePresence>
     </Layout>
   );

@@ -13,12 +13,12 @@ const serviceContent = {
 
 const Services = () => {
   return (
-    <div className="h-full bg-primary/30 py-36 flex items-center">
+    <div className="h-full bg-primary/30 xl:pt-36 xl:pb-36 pt-24 pb-20 flex items-center">
       <Circles />
-      <div className="container mx-auto">
+      <div className="container mx-auto h-full xl:overflow-y-visible overflow-y-scroll">
         <div className="flex flex-col xl:flex-row gap-x-8">
           {/** text */}
-          <div className="text-center flex xl:w-[30vw] flex-col lg:text-left mb-4">
+          <div className="text-center flex xl:w-[30vw] flex-col xl:text-left mb-4">
             <motion.h2
               className="h2 xl:mt-8"
               dangerouslySetInnerHTML={{ __html: serviceContent.title }}

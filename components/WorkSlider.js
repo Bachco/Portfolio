@@ -10,6 +10,7 @@ import { Pagination } from "swiper";
 import { BsArrowRight } from "react-icons/bs";
 
 import Image from "next/image";
+import InDev from "./InDev";
 
 // data
 const workSlides = {
@@ -71,7 +72,7 @@ const WorkSlider = () => {
       {workSlides.slides.map((slide, slideIndex) => {
         return (
           <SwiperSlide key={slideIndex}>
-            <div className="grid grid-cols-2 grid-rows-2 gap-4 cursor-pointer">
+            <div className="grid grid-cols-2 grid-rows-2 gap-4 cursor-pointer relative">
               {slide.images.map((image, imageIndex) => {
                 return (
                   <div className="relative rounded-lg overflow-hidden flex items-center justify-center group" key={imageIndex}>
@@ -97,6 +98,7 @@ const WorkSlider = () => {
                 );
               })}
             </div>
+            < InDev />
           </SwiperSlide>
         );
       })}

@@ -131,7 +131,7 @@ import Circles from "../../components/Circles";
 const About = () => {
   const [index, setIndex] = useState(0);
   return (
-    <div className="h-full bg-primary/30 py-32 text-center xl:text-left">
+    <div className="h-full bg-primary/30 xl:pt-36 xl:pb-36 pt-24 pb-20 text-center xl:text-left">
       <Circles />
       <motion.div
         variants={fadeIn("right", 0.2)}
@@ -142,7 +142,7 @@ const About = () => {
       >
         <Avatar />
       </motion.div>
-      <div className="container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6 z-20">
+      <div className="container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6 z-20 xl:overflow-y-visible overflow-y-scroll">
         <div className="flex-1 flex flex-col justify-center">
           {/** text */}
           <motion.h2
