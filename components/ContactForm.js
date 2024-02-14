@@ -76,7 +76,7 @@ export const ContactForm = () => {
           />
         </button>
       </form>
-      {/* <InDev/> */}
+      <InDev/>
     </div>
   );
 };
