@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 
 //components
-import Layout from '../components/Layout';
+import Layout from '../components/Layout/Layout';
 import Transition from '../components/Transition';
 
 
