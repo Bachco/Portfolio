@@ -5,7 +5,7 @@ export const fadeIn = (direction, delay) => {
       opacity: 0,
       x: direction === 'left' ? 80 : direction === 'right' ? -80 : 0,
       transition: {
-        type: 'tween',
+        type: 'tween',é
         duration: 1.5,
         delay: delay,
         ease: [0.25, 0.6, 0.3, 0.8],
