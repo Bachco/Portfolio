@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import ParticleContainer from "../components/ParticlesContainer";
 import ProjectsBtn from "../components/ProjectsBtn";
 import Avatar from "../components/Avatar";
