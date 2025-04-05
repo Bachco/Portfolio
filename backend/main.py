@@ -21,7 +21,7 @@ limiter = Limiter(
     default_limits=["10 per day", "3 per hour"]
 )
 
-def send_email(name, location, from_email, message, subject):
+def send_email(name="not provided", from_email="not provided", message="not provided", subject=""):
     # Set up the SMTP server
     smtp_server = "smtp.gmail.com"
     smtp_port = 465
@@ -29,7 +29,7 @@ def send_email(name, location, from_email, message, subject):
     smtp_password = APP_PASSWORD
 
     # Format the email message with additional fields
-    full_message = f"From: {name} <{from_email}>\nLocation: {location or 'Not provided'}\n\n{message}"
+    full_message = f"From:<{from_email}>\n\nName:{name}\n\nMessage:{message}"
 
     # Create the email
     msg = MIMEText(full_message, 'plain', 'utf-8')
@@ -37,14 +37,18 @@ def send_email(name, location, from_email, message, subject):
     msg['From'] = smtp_user
     msg['To'] = os.getenv('EMAIL_TO')
 
+
     # Send the email
     try:
+        print(f"Connecting to SMTP server: {smtp_server}:{smtp_port}")
         with smtplib.SMTP_SSL(smtp_server, smtp_port) as server:
             server.ehlo('localhost')
             server.login(smtp_user, smtp_password)
             server.sendmail(smtp_user, [os.getenv('EMAIL_TO')], msg.as_string())
+            return True
     except Exception as e:
         print(f"Failed to send email: {e}")
+        return False
 
 @app.before_request
 def check_origin():
@@ -65,21 +69,24 @@ def email():
     
     # For POST requests
     data = request.json
-    name = request.form.get('name')
-    email = request.form.get('email')
-    message = request.form.get('message')
-    subject = request.form.get('subject')
+    if not data:
+        return jsonify({'error': 'Invalid JSON'}), 400
+    name = data.get('name')
+    from_email = data.get('email')
+    message = data.get('message')
+    subject = data.get('subject')
     # first_name = data.get('first_name')
     # last_name = data.get('last_name')
     # location = data.get('location')
     # from_email = data.get('from_email')
     # message = data.get('message')
-    
-    if not email or not message or not name:
-        return jsonify({'error': 'Missing required fields'}), 400
 
-    send_email(name, "", email, message, subject)
-    # send_email(name, location, from_email, message, subject)
+    if not from_email or not message:
+        return jsonify({'error': f'Missing required fields'}), 400
+
+    sent = send_email(name=name, from_email=from_email, message=message, subject=subject)
+    if not sent:
+        return jsonify({'error': 'Failed to send email'}), 500
     response = jsonify({'success': True})
     response.headers.add("Access-Control-Allow-Origin", ORIGIN)
     return response
