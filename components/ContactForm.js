@@ -10,6 +10,12 @@ export const ContactForm = () => {
     const email = e.currentTarget.email.value;
     const subject = e.currentTarget.subject.value;
     const message = e.currentTarget.message.value;
+    const payload = {
+      name,
+      email,
+      subject,
+      message,
+    };
     console.log(name + " | " + email + " | " + subject + " | " + message);
     console.log(e.currentTarget);
     console.log(data);
@@ -20,7 +26,7 @@ export const ContactForm = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: new URLSearchParams(data),
+        body: JSON.stringify(payload),
       });
       if (!response.ok) {
         throw new Error(`Invalid response: ${response.status}`);
