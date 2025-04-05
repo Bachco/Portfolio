@@ -17,6 +17,9 @@ export const ContactForm = () => {
     try {
       const response = await fetch("https://a7ikkiw8x8.execute-api.eu-central-1.amazonaws.com/dev/email", {
         method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: new URLSearchParams(data),
       });
       if (!response.ok) {
