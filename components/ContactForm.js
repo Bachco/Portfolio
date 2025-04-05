@@ -15,7 +15,7 @@ export const ContactForm = () => {
     console.log(data);
 
     try {
-      const response = await fetch("http://localhost:5000/contact", {
+      const response = await fetch("https://a7ikkiw8x8.execute-api.eu-central-1.amazonaws.com/dev/contact", {
         method: "post",
         body: new URLSearchParams(data),
       });
@@ -76,7 +76,6 @@ export const ContactForm = () => {
           />
         </button>
       </form>
-      <InDev/>
     </div>
   );
 };
