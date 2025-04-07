@@ -1,24 +1,31 @@
+import { useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { ContactContent } from "../pages/contact";
-import InDev from "./InDev";
 
 export const ContactForm = () => {
+  const [statusMessage, setStatusMessage] = useState("");
+  const [statusType, setStatusType] = useState(""); // "success" | "error"
+
+  const showStatus = (message, type) => {
+    setStatusMessage(message);
+    setStatusType(type);
+
+    // Ak je to success, nech to zmizne po 4 sekundách
+    if (type === "success") {
+      setTimeout(() => {
+        setStatusMessage("");
+        setStatusType("");
+      }, 4000);
+    }
+  };
+
   async function handleSubmit(e) {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
     const name = e.currentTarget.name.value;
     const email = e.currentTarget.email.value;
     const subject = e.currentTarget.subject.value;
     const message = e.currentTarget.message.value;
-    const payload = {
-      name,
-      email,
-      subject,
-      message,
-    };
-    console.log(name + " | " + email + " | " + subject + " | " + message);
-    console.log(e.currentTarget);
-    console.log(data);
+    const payload = { name, email, subject, message };
 
     try {
       const response = await fetch("https://a7ikkiw8x8.execute-api.eu-central-1.amazonaws.com/dev/email", {
@@ -28,13 +35,15 @@ export const ContactForm = () => {
         },
         body: JSON.stringify(payload),
       });
+
       if (!response.ok) {
         throw new Error(`Invalid response: ${response.status}`);
       }
-      alert("Thanks for contacting us, we will get back to you soon!");
+
+      showStatus("Ďakujeme za správu! Ozveme sa čoskoro.", "success");
+      e.currentTarget.reset();
     } catch (err) {
-      console.error(err);
-      alert("We can't submit the form, try again later?" + err.message);
+      showStatus("Nepodarilo sa odoslať formulár. Skúste to neskôr.", "error");
     }
   }
 
@@ -45,19 +54,20 @@ export const ContactForm = () => {
         onSubmit={handleSubmit}
         id="form"
       >
-        {/** group */}
         <div className="flex gap-x-6 w-full">
           <input
             type="text"
             placeholder={ContactContent.placeholders.name}
             className="input normal-case"
             name="name"
+            required
           />
           <input
-            type="text"
+            type="email"
             placeholder="Email"
             className="input lowercase"
             name="email"
+            required
           />
         </div>
         <input
@@ -65,11 +75,13 @@ export const ContactForm = () => {
           placeholder={ContactContent.placeholders.subject}
           className="input normal-case"
           name="subject"
+          required
         />
         <textarea
           placeholder={ContactContent.placeholders.message}
           className="textarea normal-case"
           name="message"
+          required
         />
         <button
           className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300
@@ -84,6 +96,17 @@ export const ContactForm = () => {
             transition-all duration-500 absolute text-[22px]"
           />
         </button>
+
+        {/* Hlásenie pod tlačidlom */}
+        {statusMessage && (
+          <div
+            className={`mt-4 text-sm font-medium ${
+              statusType === "success" ? "text-green-500" : "text-red-500"
+            }`}
+          >
+            {statusMessage}
+          </div>
+        )}
       </form>
     </div>
   );
