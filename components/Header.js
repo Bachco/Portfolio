@@ -3,7 +3,7 @@ import Link from "next/link";
 import Socials from "../components/Socials";
 
 const HeaderData = {
-  logoText: '<span class="font-semibold">Jozef</span> Bachorík <span class="text-accent leading-none font-medium"> .</span>',
+  logoText: '<span class="font-semibold">Jozef</span> Bachorík<span class="text-accent leading-none font-medium"> .</span>',
 };
 
 const Header = () => {
