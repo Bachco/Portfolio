@@ -91,7 +91,7 @@ const WorkSlider = () => {
           <SwiperSlide key={slideIndex}>
             <div className="mb-2 xl:mb-6 text-center">
               <h2
-                className="text-xl xl:text-2xl font-medium text-white [&>a]:underline [&>a:hover]:text-purple-600"
+                className="text-xl xl:text-2xl font-medium text-white [&>a:hover]:text-accent"
                 dangerouslySetInnerHTML={{ __html: slide.title }}
               ></h2>
             </div>
