@@ -19,10 +19,6 @@ function MyApp({ Component, pageProps }) {
         <motion.div
           key={router.route}
           className="h-full md:pb-0 pb-20"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.4, ease: "easeInOut" }}
         >
           <Component {...pageProps} />
         </motion.div>
