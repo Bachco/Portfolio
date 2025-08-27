@@ -4,8 +4,10 @@ import '../styles/globals.css';
 import Layout from '../components/Layout/Layout';
 import Transition from '../components/Transition';
 
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
 
-//router
 import { useRouter } from 'next/router';
 
 //framer motion
@@ -27,5 +29,3 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
-
-//
