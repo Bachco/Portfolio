@@ -10,35 +10,6 @@ import Image from "next/image";
 const workSlides = {
   slides: [
     {
-      title: "Personal work",
-      images: [
-        {
-          title: "BMWelding",
-          path: "/personal/bmwelding.jpg",
-          url: "https://www.bmwelding.sk/",
-          description: "NextJS, Typescript...",
-        },
-        {
-          title: "Nedorost",
-          path: "/personal/nedorost.jpg",
-          url: "https://nedorost.sk/",
-          description: "Wordpress",
-        },
-        {
-          title: "title",
-          path: "/personal/nvdrogeria.jpg",
-          url: "https://nvdrogeria.sk/",
-          description: "Wordpress",
-        },
-        {
-          title: "Phalare",
-          path: "/personal/phalare.jpg",
-          url: "https://example.com/thumb4",
-          description: "Wordpress",
-        },
-      ],
-    },
-    {
       title:
         "Frontend work for <a href='https://www.identiq.sk/' target='_blank'>IDENTIQ</a>",
       images: [
@@ -68,6 +39,35 @@ const workSlides = {
         },
       ],
     },
+    {
+      title: "Personal work",
+      images: [
+        {
+          title: "BMWelding",
+          path: "/personal/bmwelding.jpg",
+          url: "https://www.bmwelding.sk/",
+          description: "NextJS, Typescript...",
+        },
+        {
+          title: "Nedorost",
+          path: "/personal/nedorost.jpg",
+          url: "https://nedorost.sk/",
+          description: "Wordpress",
+        },
+        {
+          title: "title",
+          path: "/personal/nvdrogeria.jpg",
+          url: "https://nvdrogeria.sk/",
+          description: "Wordpress",
+        },
+        {
+          title: "Phalare",
+          path: "/personal/phalare.jpg",
+          url: "https://example.com/thumb4",
+          description: "Wordpress",
+        },
+      ],
+    },    
   ],
 };
 
